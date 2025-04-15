@@ -1,57 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Stock Analytics Dashboard</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-  <!-- Include Plotly via CDN -->
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head>
-<body>
-  <!-- Top Navigation Bar with inputs -->
-  <div class="navbar">
-    <form method="post" action="/">
-      <input type="text" name="symbols" placeholder="Enter stocks, ETFs, or index symbols (comma separated)" value="{{ symbols|default('') }}">
-      <!-- New drop-down for selecting an index CSV -->
-      <label for="index_choice">Compare to Index:</label>
-      <select name="index_choice" id="index_choice">
-        {% for option in index_options %}
-          {% if selected_index and option == selected_index %}
-            <option value="{{ option }}" selected>{{ option }}</option>
-          {% else %}
-            <option value="{{ option }}">{{ option }}</option>
-          {% endif %}
-        {% endfor %}
-      </select>
-      <input type="hidden" name="view" id="view" value="{{ view|default('sharpe') }}">
-      <button type="submit">Analyze</button>
-    </form>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="plot-container">
+  {% if graphJSON %}
+  <div id="plotly-chart"></div>
+  {% else %}
+  <div class="alert alert-info" role="alert">
+    Please enter ticker symbols and click "Analyze" to view the analytics.
   </div>
-  
-  <!-- Tab Row for analytic view selection -->
-  <div class="tab-bar">
-    <button type="button" class="tab-button {% if view=='sharpe' %}active{% endif %}" onclick="setView('sharpe')">Sharpe Ratios</button>
-    <button type="button" class="tab-button {% if view=='pe' %}active{% endif %}" onclick="setView('pe')">P/E Scatterplot</button>
-  </div>
-  
-  <!-- Analysis Area for Plotly Visuals -->
-  <div id="analysis_area">
-    {% if graphJSON %}
-      <div id="plotly-div"></div>
-      <script>
-        var graph = {{ graphJSON|safe }};
-        Plotly.newPlot('plotly-div', graph.data, graph.layout);
-      </script>
-    {% else %}
-      <p>Please enter ticker symbols and choose an index from the drop-down along with an analytic view.</p>
-    {% endif %}
-  </div>
-  
-  <script>
-    function setView(viewName) {
-      document.getElementById('view').value = viewName;
-      document.querySelector('.navbar form').submit();
-    }
-  </script>
-</body>
-</html>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% if graphJSON %}
+<script>
+  // This script is executed after all external scripts are loaded.
+  var figure = {{ graphJSON | safe }};
+  Plotly.newPlot("plotly-chart", figure.data, figure.layout);
+</script>
+{% endif %}
+{% endblock %}
