@@ -105,7 +105,7 @@ Stock_Analysis_App/
 
 | **File/Folder**            | **Description**                                                                                      | **Example/File Name**         |
 |----------------------------|------------------------------------------------------------------------------------------------------|-------------------------------|
-| `static/index_lists/`      | CSV files containing index lists (e.g., S&P 500). Columns include Symbol, GICS Sector, Sub-Industry, etc. | `sp500.csv`, `nasdaq100.csv`   |
+| `static/index_lists/`      | CSV files containing index lists (e.g., S&P 500). Columns include Symbol, GICS Sector, Sub-Industry, etc. | `Russell_1000_Index.csv`, `SP500_Index.csv`   |
 | `static/stock_snapshots/`  | JSON snapshots of stock data downloaded via yfinance. Contains key financial data for each ticker.   | `snapshot_20250414-2329.json`  |
 
 ---
