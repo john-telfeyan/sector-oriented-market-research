@@ -1,12 +1,5 @@
-# sector-oriented-market-research
-Simple local web app to analyze some basic descriptive and inferential statistics for stocks within their sectors 
 
-
-Below is an example of an excellent, helpful, and clear `README.md` file for your project. You can use or adapt the content below:
-
----
-
-# Stock Analysis App
+# Sector Oriented Market Research Webapp App
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/yourusername/stock-analysis-app)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
