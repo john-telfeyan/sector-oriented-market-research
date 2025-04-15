@@ -1,0 +1,6 @@
+flask==3.0.0
+pandas==2.2.0
+yfinance==0.2.31
+plotly==5.18.0
+gunicorn==21.2.0  # Optional, if deploying on a production server
+requests==2.31.0  # Ensures external API calls work smoothly
