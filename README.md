@@ -1,12 +1,5 @@
-# sector-oriented-market-research
-Simple local web app to analyze some basic descriptive and inferential statistics for stocks within their sectors 
 
-
-Below is an example of an excellent, helpful, and clear `README.md` file for your project. You can use or adapt the content below:
-
----
-
-# Stock Analysis App
+# Sector Oriented Market Research Webapp App
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/yourusername/stock-analysis-app)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -112,7 +105,7 @@ Stock_Analysis_App/
 
 | **File/Folder**            | **Description**                                                                                      | **Example/File Name**         |
 |----------------------------|------------------------------------------------------------------------------------------------------|-------------------------------|
-| `static/index_lists/`      | CSV files containing index lists (e.g., S&P 500). Columns include Symbol, GICS Sector, Sub-Industry, etc. | `sp500.csv`, `nasdaq100.csv`   |
+| `static/index_lists/`      | CSV files containing index lists (e.g., S&P 500). Columns include Symbol, GICS Sector, Sub-Industry, etc. | `Russell_1000_Index.csv`, `SP500_Index.csv`   |
 | `static/stock_snapshots/`  | JSON snapshots of stock data downloaded via yfinance. Contains key financial data for each ticker.   | `snapshot_20250414-2329.json`  |
 
 ---
