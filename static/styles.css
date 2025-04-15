@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Top Navigation Bar styling */
+  .navbar {
+    background-color: #f7f7f7;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .navbar input[type="text"],
+  .navbar select {
+    width: 40%;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .navbar label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  /* Tab-bar styling */
+  .tab-bar {
+    background-color: #fff;
+    border-bottom: 2px solid #ccc;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .tab-button {
+    background-color: #e7e7e7;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .tab-button.active {
+    background-color: #007BFF;
+    color: #fff;
+  }
+  
+  /* Analysis area styling */
+  #analysis_area {
+    padding: 20px;
+  }
+  
