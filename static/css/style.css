@@ -1,0 +1,88 @@
+/* Base Styles */
+body {
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navbar & Form Controls */
+  .navbar {
+    border-bottom: 2px solid #ddd;
+    padding: 0.5rem 1rem;
+  }
+  
+  .form-row .form-control {
+    min-width: 200px;
+    margin-right: 10px;
+  }
+  
+  /* Using a 538-inspired color scheme. Primary button colors */
+  .btn-outline-primary {
+    color: #4E79A7;
+    border-color: #4E79A7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .btn-outline-primary:hover,
+  .btn-outline-primary.active {
+    background-color: #4E79A7;
+    color: #fff;
+  }
+  
+  .btn-primary {
+    background-color: #F28E2B;
+    border-color: #F28E2B;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e07717;
+    border-color: #e07717;
+  }
+  
+  /* Snapshot Warning Alert */
+  .alert-warning {
+    margin: 0;
+    border-radius: 0;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  /* Flash Message Styling */
+  .alert-dismissible .close {
+    outline: none;
+  }
+  
+/* Main Plot Container */
+.plot-container {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    min-height: 600px; /* Increase this value as needed for a taller area */
+  }
+  
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .form-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .form-row .col-auto {
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Message Window Styling */
+.message-window {
+    max-height: 60px;  /* Adjust height as needed */
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 10px;
+}

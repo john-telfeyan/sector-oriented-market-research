@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Stock Analysis App</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <!-- Top Navigation: All control elements in a compact layout -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <!-- Form includes ticker input, index dropdown, four analytic view tabs, and buttons -->
+        <form method="post" action="{{ url_for('index') }}" class="w-100">
+          <div class="form-row align-items-center">
+            <!-- Ticker Input -->
+            <div class="col-auto my-1">
+              <input
+                type="text"
+                name="tickers"
+                class="form-control"
+                placeholder="Enter tickers (e.g., AAPL, TSLA)"
+                value="{{ tickers }}"
+              />
+            </div>
+            <!-- Compare Index Dropdown -->
+            <div class="col-auto my-1">
+              <select name="compare_index" class="form-control">
+                <option value="">Compare to Index:</option>
+                {% for csv in index_list %}
+                <option value="{{ csv }}" {% if compare_index == csv %}selected{% endif %}>{{ csv }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <!-- Analytic View Tabs -->
+            <div class="col-auto my-1">
+              <div class="btn-group" role="group">
+                <button
+                  type="submit"
+                  name="view"
+                  value="sharpe"
+                  class="btn btn-outline-primary {% if view=='sharpe' %}active{% endif %}"
+                >
+                  Sharp Ratios
+                </button>
+                <button
+                  type="submit"
+                  name="view"
+                  value="pe"
+                  class="btn btn-outline-primary {% if view=='pe' %}active{% endif %}"
+                >
+                  P/E Scatterplot
+                </button>
+                <button
+                  type="submit"
+                  name="view"
+                  value="pe_growth"
+                  class="btn btn-outline-primary {% if view=='pe_growth' %}active{% endif %}"
+                >
+                  Trailing P/E vs. Earnings Growth
+                </button>
+                <button
+                  type="submit"
+                  name="view"
+                  value="pb_roe"
+                  class="btn btn-outline-primary {% if view=='pb_roe' %}active{% endif %}"
+                >
+                  Price-to-Book vs. ROE
+                </button>
+              </div>
+            </div>
+            <!-- Analyze Button -->
+            <div class="col-auto my-1">
+              <button type="submit" class="btn btn-primary">Analyze</button>
+            </div>
+            <!-- Fetch Updated Data Button -->
+            <div class="col-auto my-1">
+              <button type="submit" name="fetch_data" value="true" class="btn btn-secondary">
+                Fetch Updated Data
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </nav>
+
+    <!-- Snapshot Warning -->
+    {% if snapshot_outdated %}
+    <div class="alert alert-warning text-center m-0" role="alert">
+      Latest snapshot ({{ latest_snapshot }}) is more than 4 days old.
+    </div>
+    {% endif %}
+
+    <!-- Message Window for flash messages -->
+    <div id="message-window" class="container mt-2 message-window">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show mb-1" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container-fluid mt-3">
+      {% block content %}{% endblock %}
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"
+    ></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
