@@ -1,5 +1,5 @@
 
-# Sector Oriented Market Research Webapp App
+# Sector Oriented Market Research Web App
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/yourusername/stock-analysis-app)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
